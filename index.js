@@ -9,7 +9,7 @@ function tempCheck(evt) {
  * @param {Function} hideCallback callback when cue is hidden
  */
 function closedCaptionsListener(vidEl, showCallback, hideCallback) {
-    const tracks = vidEl.videoTracks
+    const tracks = vidEl.textTracks()
     for (let i = 0, len = tracks.length; i < len; i++) {
         i.addEventListener('cuechange', tempCheck)
     }
