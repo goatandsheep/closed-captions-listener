@@ -1,5 +1,16 @@
+let toggle = false
+// TODO: make array of toggles for each track
+let showCall = () => ''
+let hideCall = () => ''
+
 function tempCheck(evt) {
-    console.log(evt)
+    toggle = !toggle
+    console.log(evt.timeStamp, evt)
+    if (toggle) {
+        showCall(evt.timeStamp)
+    } else {
+        hideCall(evt.timeStamp)
+    }
 }
 
 /**
@@ -9,8 +20,11 @@ function tempCheck(evt) {
  * @param {Function} hideCallback callback when cue is hidden
  */
 function closedCaptionsListener(vidEl, showCallback, hideCallback) {
-    const tracks = vidEl.textTracks()
-    for (let i = 0, len = tracks.length; i < len; i++) {
-        i.addEventListener('cuechange', tempCheck)
+    const trax = vidEl.getElementsByTagName('track')
+    showCall = showCallback
+    hideCall = hideCallback
+    for (let elRef = 0, len = trax.length; elRef < len; elRef++) {
+        const el = trax[elRef]
+        el.addEventListener('cuechange', tempCheck)
     }
 }

@@ -17,8 +17,9 @@
     allowfullscreen
     poster="http://content.bitsontherun.com/thumbs/q1fx20VZ-640.jpg"
     id="sample-video"
+    crossorigin="anonymous"
   >
-    <source src="http://ia800200.us.archive.org/7/items/Sintel/sintel-2048-surround_512kb.mp4"
+    <source src="http://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4"
     type="video/mp4">
     <!-- <source src="http://demo.jwplayer.com/html5-report/sintel.webm"
     type="video/webm"> -->
@@ -30,14 +31,11 @@
   <div id="history"></div>
   <script>
     let vidEl = {}
-    const showCue = function() {
-      document.getElementById('history').innerHTML += 'show'
+    const showCue = function(timestamp) {
+      document.getElementById('history').innerHTML += (timestamp + 'ms: show<br>')
     }
-    const hideCue = function() {
-      document.getElementById('history').innerHTML += 'hide'
-    }
-    const timeUpdate = function() {
-      document.getElementById('history').innerHTML += vidEl.currentTime
+    const hideCue = function(timestamp) {
+      document.getElementById('history').innerHTML += (timestamp + 'ms: hide<br>')
     }
     window.onload = function() {
       vidEl = document.getElementById('sample-video')
