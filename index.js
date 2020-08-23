@@ -6,6 +6,7 @@ let hideCall = () => ''
 function tempCheck(evt) {
     toggle = !toggle
     console.log(evt.timeStamp, evt)
+    // TODO: fix timeStamp value
     if (toggle) {
         showCall(evt.timeStamp)
     } else {
