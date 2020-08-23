@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+  <script src="index.js"></script>
+  <link rel="stylesheet" href="index.css" />
+  <title>Closed Captions events demo</title>
+</head>
+<body>
+  <h1>Closed Captions Listener Demo</h1>
+  <p>
+    This demonstrates how closed captions emit events as captions are shown and hidden.
+  </p>
+  <video
+    width="560"
+    height="315"
+    controls
+    src="https://www.htmlquick.com/videos/Cyrano_de_Beryerac.mp4"
+    frameborder="0"
+    allowfullscreen
+    id="sample-video"
+  >
+    <source src="https://www.htmlquick.com/videos/Cyrano_de_Beryerac.mp4"
+    type="video/mp4">
+    <source src="https://www.htmlquick.com/videos/Cyrano_de_Beryerac.webm"
+    type="video/webm">
+    <source src="https://www.htmlquick.com/videos/Cyrano_de_Beryerac.ogg"
+    type="video/ogg">
+    <track kind="captions" label="Captions"
+      src="https://www.htmlquick.com/videos/Cyrano_de_Beryerac_EN.vtt"
+      srclang="en"
+    ></track>
+  </video>
+  <div id="history"></div>
+  <script>
+    let vidEl = {}
+    const showCue = function() {
+      document.getElementById('history').innerHTML += 'show'
+    }
+    const hideCue = function() {
+      document.getElementById('history').innerHTML += 'hide'
+    }
+    const timeUpdate = function() {
+      document.getElementById('history').innerHTML += vidEl.currentTime
+    }
+    window.onload = function() {
+      vidEl = document.getElementById('sample-video')
+      closedCaptionsListener(vidEl, showCue, hideCue)
+    }
+  </script>
+</body>
