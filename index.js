@@ -9,8 +9,8 @@ class CaptionSync {
     constructor(vidEl, showCallback, hideCallback) {
         this.vidEl = vidEl
         const tracksList = vidEl.getElementsByTagName('track')
-        this.showCall = showCallback
-        this.hideCall = hideCallback
+        this.showCallback = showCallback
+        this.hideCallback = hideCallback
         this._toggle = false
         for (let elRef = 0, len = tracksList.length; elRef < len; elRef++) {
             const el = tracksList[elRef]
@@ -21,9 +21,9 @@ class CaptionSync {
     handleCuechange(evt) {
         this._toggle = evt.target.track.activeCues.length
         if (this._toggle) {
-            this.showCall()
+            this.showCallback()
         } else {
-            this.hideCall()
+            this.hideCallback()
         }
     }
     close() {
