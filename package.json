@@ -1,0 +1,47 @@
+{
+  "name": "caption-sync",
+  "version": "0.0.1",
+  "description": "Simple mobile browser library for toggling vibration.",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "lint": "xo",
+    "lint:fix": "xo --fix",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goatandsheep/closed-captions-listener.git"
+  },
+  "keywords": [
+    "dom",
+    "closed captions",
+    "captions",
+    "caption",
+    "subtitle",
+    "track",
+    "accessibility"
+  ],
+  "author": "Kemal Ahmed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/goatandsheep/closed-captions-listener/issues"
+  },
+  "homepage": "https://github.com/goatandsheep/closed-captions-listener#readme",
+  "devDependencies": {
+    "codecov": "^3.8.1",
+    "jest": "^26.6.3",
+    "xo": "^0.37.1"
+  },
+  "xo": {
+    "envs": [
+      "browser",
+      "jest"
+    ],
+    "ignores": [
+      "docs"
+    ]
+  }
+}

@@ -1,31 +1,27 @@
-let toggle = false
-// TODO: make array of toggles for each track
-let showCall = () => ''
-let hideCall = () => ''
+class CaptionSync {
+    /**
+     * Listener for closed captions video events
+     * @constructor
+     * @param {String} vidId 
+     * @param {Function} showCallback callback when cue is shown
+     * @param {Function} hideCallback callback when cue is hidden
+     */
+    constructor(vidEl, showCallback, hideCallback) {
+        this.vidEl = document.getElementById(vidEl)
+        this.showCall = showCallback
+        this.hideCall = hideCallback
+        this._toggle = false
+        this.vidEl.addEventListener('cuechange', handleCuechange)
+    }
 
-function tempCheck(evt) {
-    toggle = !toggle
-    console.log(evt.timeStamp, evt)
-    // TODO: fix timeStamp value
-    if (toggle) {
-        showCall(evt.timeStamp)
-    } else {
-        hideCall(evt.timeStamp)
+    handleCuechange(evt) {
+        this._toggle = evt.target.track.activeCues.length
+        if (this._toggle) {
+            showCall()
+        } else {
+            hideCall()
+        }
     }
 }
 
-/**
- * Listener for closed captions video events
- * @param {String} vidId 
- * @param {Function} showCallback callback when cue is shown
- * @param {Function} hideCallback callback when cue is hidden
- */
-function closedCaptionsListener(vidEl, showCallback, hideCallback) {
-    const trax = vidEl.getElementsByTagName('track')
-    showCall = showCallback
-    hideCall = hideCallback
-    for (let elRef = 0, len = trax.length; elRef < len; elRef++) {
-        const el = trax[elRef]
-        el.addEventListener('cuechange', tempCheck)
-    }
-}
+module.exports = CaptionSync
