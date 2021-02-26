@@ -1,6 +1,6 @@
 {
   "name": "caption-sync",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple mobile browser library for toggling vibration.",
   "main": "index.js",
   "files": [
