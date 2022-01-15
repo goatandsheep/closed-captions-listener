@@ -8,6 +8,29 @@
 [![XO code style](https://badgen.net/badge/code%20style/XO/cyan)](https://github.com/xojs/xo)
 [![npm downloads](https://img.shields.io/npm/dt/caption-sync.svg?style=flat-square)](https://www.npmjs.com/package/caption-sync)
 
+## Installation
+
+```shell
+npm i caption-sync
+```
+
+## Node Example
+
+```javascript
+import CaptionSync from 'caption-sync'
+
+const showCaptionFunc = function() {
+    // start output
+}
+const hideCaptionFunc = function() {
+    // stop output
+}
+
+const video = document.getElementById('test-video')
+const captionsListener = new CaptionSync(video, showCaptionFunc, hideCaptionFunc);
+
+```
+
 ## Credit
 
 Brought to you by [beatcaps.io](https://www.beatcaps.io)
