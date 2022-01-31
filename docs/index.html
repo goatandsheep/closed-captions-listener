@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <script src="index.js"></script>
+  <script src="./bundle.js"></script>
   <link rel="stylesheet" href="index.css" />
   <title>Closed Captions events demo</title>
 </head>
@@ -40,7 +40,8 @@
     }
     window.onload = function() {
       vidEl = document.getElementById('sample-video')
-      closedCaptionsListener(vidEl, showCue, hideCue)
+      const cs = new CaptionSync(vidEl, showCue, hideCue);
+      // closedCaptionsListener(vidEl, showCue, hideCue)
     }
   </script>
 </body>
