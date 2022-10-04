@@ -34,7 +34,7 @@
   "devDependencies": {
     "browserify": "^17.0.0",
     "codecov": "^3.8.1",
-    "geckodriver": "^1.22.1",
+    "geckodriver": "1.22.3",
     "nightwatch": "^1.5.1",
     "xo": "0.52.4"
   },
