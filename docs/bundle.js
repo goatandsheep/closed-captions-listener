@@ -6,12 +6,18 @@ class CaptionSync {
      * @param {String} vidId 
      * @param {Function} showCallback callback when cue is shown
      * @param {Function} hideCallback callback when cue is hidden
+     * @param {Boolean} [playPause=true] toggle pausing callback action
      */
-    constructor(vidEl, showCallback, hideCallback) {
+    constructor(vidEl, showCallback, hideCallback, playPause = true) {
         this.vidEl = vidEl
         const tracksList = vidEl.getElementsByTagName('track')
         this.showCallback = showCallback
         this.hideCallback = hideCallback
+        this.visible = false
+        if (playPause) {
+          vidEl.addEventListener('pause', () => this.handlePause());
+          vidEl.addEventListener('play', () => this.handlePlay());
+        }
         this._toggle = false
         for (let elRef = 0, len = tracksList.length; elRef < len; elRef++) {
             const el = tracksList[elRef]
@@ -19,12 +25,25 @@ class CaptionSync {
         }
     }
 
+    handlePause() {
+      if (this.visible = true) {
+        this.hideCallback();
+      }
+    }
+    handlePlay() {
+      if (this.visible = true) {
+        this.showCallback();
+      }
+    }
+
     handleCuechange(evt) {
         this._toggle = evt.target.track.activeCues.length;
         if (this._toggle) {
           this.showCallback();
+          this.visible = true;
         } else {
           this.hideCallback();
+          this.visible = false;
         }
       }
       close() {
