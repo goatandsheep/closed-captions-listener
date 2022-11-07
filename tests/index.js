@@ -1,8 +1,8 @@
-const CaptionSync = require('../index')
+const CaptionSync = require('../index');
 
 module.exports = {
-    'My first test case': function(browser) {
-        browser
-        const cs = new CaptionSync('video')
-    }
-}
+	'My first test case'(browser) {
+		browser;
+		const cs = new CaptionSync('video');
+	}
+};
